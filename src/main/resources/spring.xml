@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 接口的实现类 -->
+	<bean id="loginNotice" class="com.erye.service.LoginNotice"></bean>
+
+	<dubbo:application name="consumer"/>
+	
+	<!-- 注册中心的名字和地址 -->
+	<dubbo:registry protocol="zookeeper" address="192.168.0.110:2181"></dubbo:registry>
+	
+	<!-- 需要调用的服务 -->
+	<dubbo:reference id="loginService" interface="com.erye.service.LoginServiceInter" protocol="dubbo">
+		<dubbo:method name="login" onreturn="loginNotice.onreturn" onthrow="loginNotice.onthrow"></dubbo:method>
+	</dubbo:reference>
+	<dubbo:reference id="registService" interface="com.erye.service.RegistServiceInter" protocol="rmi"></dubbo:reference>
+	<dubbo:reference id="mergerService" interface="com.erye.service.FuckYouServiceInter" protocol="dubbo" group="a,b" merger="true"></dubbo:reference>
+	<dubbo:reference id="validationService" interface="com.erye.service.ValidationServiceInter" protocol="dubbo"></dubbo:reference>
+	
+</beans>
