@@ -43,4 +43,34 @@
     <servlet-name>ValidationServlet</servlet-name>
     <url-pattern>/ValidationServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GenericServlet</display-name>
+    <servlet-name>GenericServlet</servlet-name>
+    <servlet-class>com.erye.servlet.GenericServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GenericServlet</servlet-name>
+    <url-pattern>/GenericServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EchoServlet</display-name>
+    <servlet-name>EchoServlet</servlet-name>
+    <servlet-class>com.erye.servlet.EchoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EchoServlet</servlet-name>
+    <url-pattern>/EchoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AsyncServlet</display-name>
+    <servlet-name>AsyncServlet</servlet-name>
+    <servlet-class>com.erye.servlet.AsyncServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AsyncServlet</servlet-name>
+    <url-pattern>/AsyncServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -30,7 +30,11 @@ public class ValidationServlet extends HttpServlet {
 		
 		// 获取页面过来的数据
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String passwordStr = request.getParameter("password");
+		String password = null;
+		if(null != passwordStr && !"".equals(passwordStr)) {
+			password = passwordStr;
+		}
 		String email = request.getParameter("email");
 		String ageStr = request.getParameter("age");
 		String loginDateStr = request.getParameter("loginDate");
@@ -68,6 +72,9 @@ public class ValidationServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		// 调用update方法，测试分组测试，此时密码为null时，update方法是可以调用的，因为@NotNull(groups = ValidationServiceInter.Save.class)
+		validationService.update(consumer);
 		
 		// 调用save(@NotNull Consumer consumer)方法，测试参数不允许为null
 		validationService.save(consumer);
