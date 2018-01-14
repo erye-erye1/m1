@@ -11,7 +11,7 @@
 	<dubbo:application name="consumer"/>
 	
 	<!-- 注册中心的名字和地址 -->
-	<dubbo:registry protocol="zookeeper" address="10.5.96.104:2181"></dubbo:registry>
+	<dubbo:registry protocol="zookeeper" address="192.168.0.110:2181"></dubbo:registry>
 	
 	<!-- 需要调用的服务 -->
 	<dubbo:reference id="loginService" interface="com.erye.service.LoginServiceInter" protocol="dubbo">
@@ -20,8 +20,10 @@
 	<dubbo:reference id="registService" interface="com.erye.service.RegistServiceInter" protocol="rmi"></dubbo:reference>
 	<dubbo:reference id="mergerService" interface="com.erye.service.FuckYouServiceInter" protocol="dubbo" group="a,b" merger="true"></dubbo:reference>
 	<dubbo:reference id="validationService" interface="com.erye.service.ValidationServiceInter" protocol="dubbo"></dubbo:reference>
-	<dubbo:reference id="genericService" interface="com.erye.inter.GenericServiceInter" generic="true"></dubbo:reference>
-	<dubbo:reference id="echoService" interface="com.erye.service.EchoServiceInter"></dubbo:reference>
-	<dubbo:reference id="asyncService" interface="com.erye.service.AsyncServiceInter" async="true"></dubbo:reference>
+	<dubbo:reference id="genericService" interface="com.erye.inter.GenericServiceInter" generic="true" protocol="dubbo"></dubbo:reference>
+	<dubbo:reference id="echoService" interface="com.erye.service.EchoServiceInter" protocol="dubbo"></dubbo:reference>
+	<dubbo:reference id="asyncService" interface="com.erye.service.AsyncServiceInter" async="true" protocol="dubbo"></dubbo:reference>
+	<dubbo:reference id="callbackService" interface="com.erye.service.CallbackServiceInter" protocol="dubbo"></dubbo:reference>
+	<dubbo:reference id="stubService" interface="com.erye.service.StubServiceInter" protocol="dubbo" stub="com.erye.service.StubServiceStub2"></dubbo:reference>
 	
 </beans>
